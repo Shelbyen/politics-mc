@@ -1,0 +1,8 @@
+name: politics-mc
+version: '1.0-SNAPSHOT'
+main: funn.j2k.politicsMc.PoliticsMc
+api-version: '1.21'
+load: STARTUP
+authors: [shebik]
+description: My plugin for politics
+website: j2k.fun
