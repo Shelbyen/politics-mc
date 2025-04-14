@@ -14,11 +14,11 @@ import org.joml.*
 
 
 val textBackgroundTransform: Matrix4f; get() = Matrix4f()
-    .translate(-0.1f + .5f,-0.5f + .5f,0f)
-    .scale(8.0f,4.0f,1f) //  + 0.003f  + 0.001f
+    .translate(-0.1f + .5f, -0.5f + .5f, 0f)
+    .scale(8.0f, 4.0f, 1f) //  + 0.003f  + 0.001f
 
 
-internal val maps = mutableListOf<Map>()
+internal val maps = mutableMapOf<String, Map>()
 
 
 fun setupCustomMap() {
@@ -26,16 +26,11 @@ fun setupCustomMap() {
     val randomMap = CustomItemComponent("random_map")
     customItemRegistry += createNamedItem(org.bukkit.Material.BREEZE_ROD, "Random Map").attach(randomMap)
     randomMap.onGestureUse { player, _ ->
-        if (maps.size == 0) {
-            maps += PerlinNoiseMap(player, Vector(0.8f, -0.4f, 1f))
-        } else {
-            maps.clear()
-        }
-
+        maps[player.name] = PerlinNoiseMap(player)
     }
 
     onTick {
-        maps.toList().forEach { it.update() }
+        maps.toList().forEach { it.second.update() }
     }
 }
 
