@@ -3,6 +3,17 @@ version: '1.0-SNAPSHOT'
 main: funn.j2k.politicsMc.PoliticsMc
 api-version: '1.21'
 load: STARTUP
-authors: [shebik]
+authors: [ shebik ]
 description: My plugin for politics
 website: j2k.fun
+
+
+commands:
+  maps:
+    description: Open the maps menu
+    permission: politics-mc.maps
+
+permissions:
+  politics-mc.maps:
+    description: Allows access to the items command
+    default: op
