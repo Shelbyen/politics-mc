@@ -9,6 +9,7 @@ import funn.j2k.politicsMc.utilities.rendering.textRenderEntity
 import org.bukkit.Color
 import org.bukkit.World
 import org.bukkit.entity.Display.Brightness
+import org.bukkit.entity.Player
 import org.bukkit.util.Vector
 import org.joml.*
 
@@ -20,13 +21,63 @@ val textBackgroundTransform: Matrix4f; get() = Matrix4f()
 
 internal val maps = mutableMapOf<String, Map>()
 
-
+@Suppress("UnstableApiUsage")
 fun setupCustomMap() {
+    fun Player.lockMovement() {
+        if (vehicle != null) {
+            if (vehicle?.scoreboardTags?.contains("player_lock") == true) {
+                vehicle?.scoreboardTags?.add("player_lock_active")
+            }
+            return
+        }
+
+        world.spawn(eyeLocation.add(.0, -1.02, .0), org.bukkit.entity.ArmorStand::class.java) {
+            it.setGravity(false)
+            it.isInvisible = true
+            it.isInvulnerable = true
+            it.isSilent = true
+            it.isCollidable = false
+            it.isMarker = true
+            it.scoreboardTags.add("player_lock")
+            it.scoreboardTags.add("player_lock_active")
+            it.addPassenger(this)
+        }
+    }
+
+    onTick {
+        for (entity in EntityTag("player_lock").getEntities()) {
+            if (!entity.scoreboardTags.contains("player_lock_active") || entity.passengers.isEmpty()) {
+                entity.remove()
+                continue
+            }
+
+            entity.scoreboardTags.remove("player_lock_active")
+        }
+    }
 
     val randomMap = CustomItemComponent("random_map")
     customItemRegistry += createNamedItem(org.bukkit.Material.BREEZE_ROD, "Random Map").attach(randomMap)
     randomMap.onGestureUse { player, _ ->
+        if (maps[player.name] != null) {
+            maps.remove(player.name)
+            return@onGestureUse
+        }
         maps[player.name] = PerlinNoiseMap(player)
+    }
+
+    val moveCamera = CustomItemComponent("move_map")
+    customItemRegistry += createNamedItem(org.bukkit.Material.CLOCK, "Move Map").attach(moveCamera)
+    moveCamera.onHeldTick { player, _ ->
+        val map = maps[player.name] ?: return@onHeldTick
+        player.lockMovement()
+
+        sendDebugMessage(map.localPosition.toString())
+
+//        val input = player.currentInput
+//        if (input.isLeft) map.localPosition.x -= .1
+//        if (input.isRight) map.localPosition.x += .1
+//        if (input.isForward) map.localPosition.y += .1
+//        if (input.isBackward) map.localPosition.y -= .1
     }
 
     onTick {
