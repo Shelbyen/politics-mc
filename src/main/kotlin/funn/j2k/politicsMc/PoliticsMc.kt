@@ -2,6 +2,7 @@ package funn.j2k.politicsMc
 
 import funn.j2k.politicsMc.custom_map.maps
 import funn.j2k.politicsMc.custom_map.setupCustomMap
+import funn.j2k.politicsMc.utilities.closeCurrentPlugin
 import funn.j2k.politicsMc.utilities.currentPlugin
 import funn.j2k.politicsMc.utilities.openCustomItemInventory
 import org.bukkit.entity.Player
@@ -25,5 +26,6 @@ class PoliticsMc : JavaPlugin() {
 
     override fun onDisable() {
         maps.clear()
+        closeCurrentPlugin()
     }
 }
