@@ -7,16 +7,29 @@ import funn.j2k.politicsMc.utilities.rendering.RenderEntityGroup
 import funn.j2k.politicsMc.utilities.rendering.interpolateTransform
 import funn.j2k.politicsMc.utilities.rendering.textRenderEntity
 import org.bukkit.Color
+import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.entity.Display.Brightness
 import org.bukkit.entity.Player
 import org.bukkit.util.Vector
-import org.joml.*
+import org.joml.Matrix4f
+import org.joml.Quaternionf
+import org.joml.Vector3f
 
 
 val textBackgroundTransform: Matrix4f; get() = Matrix4f()
     .translate(-0.1f + .5f, -0.5f + .5f, 0f)
     .scale(8.0f, 4.0f, 1f) //  + 0.003f  + 0.001f
+
+fun isSimilar(location1: Location, location2: Location): Boolean {
+    val x1 = location1.x
+    val y1 = location1.y
+    val z1 = location1.z
+    val x2 = location2.x
+    val y2 = location2.y
+    val z2 = location2.z
+    return (x1 == x2 && z1 == z2 && y2 <= y1)
+}
 
 
 internal val maps = mutableMapOf<String, Map>()
@@ -24,34 +37,32 @@ internal val maps = mutableMapOf<String, Map>()
 @Suppress("UnstableApiUsage")
 fun setupCustomMap() {
     fun Player.lockMovement() {
-        if (vehicle != null) {
-            if (vehicle?.scoreboardTags?.contains("player_lock") == true) {
-                vehicle?.scoreboardTags?.add("player_lock_active")
-            }
+        if (player?.scoreboardTags?.contains("pplayer_lock") == true) {
+            player?.scoreboardTags?.add("pplayer_lock_active")
             return
         }
 
-        world.spawn(eyeLocation.add(.0, -1.02, .0), org.bukkit.entity.ArmorStand::class.java) {
-            it.setGravity(false)
-            it.isInvisible = true
-            it.isInvulnerable = true
-            it.isSilent = true
-            it.isCollidable = false
-            it.isMarker = true
-            it.scoreboardTags.add("player_lock")
-            it.scoreboardTags.add("player_lock_active")
-            it.addPassenger(this)
-        }
+        player?.scoreboardTags?.add("pplayer_lock_active")
+        player?.scoreboardTags?.add("pplayer_lock")
     }
 
-    onTick {
-        for (entity in EntityTag("player_lock").getEntities()) {
-            if (!entity.scoreboardTags.contains("player_lock_active") || entity.passengers.isEmpty()) {
-                entity.remove()
-                continue
+    onPlayerMove { event ->
+        if (event.player.scoreboardTags.contains("pplayer_lock")) {
+            if (!event.player.scoreboardTags.contains("pplayer_lock_active")) {
+                event.player.scoreboardTags.remove("pplayer_lock")
+                event.player.scoreboardTags.remove("pplayer_lock_active")
+                return@onPlayerMove
             }
 
-            entity.scoreboardTags.remove("player_lock_active")
+            val fromLocation: Location = event.from
+            val toLocation = event.to
+            if (isSimilar(fromLocation, toLocation)) {
+                return@onPlayerMove
+            }
+
+            event.to = fromLocation
+
+            event.player.scoreboardTags.remove("pplayer_lock_active")
         }
     }
 
@@ -73,11 +84,11 @@ fun setupCustomMap() {
 
         sendDebugMessage(map.localPosition.toString())
 
-//        val input = player.currentInput
-//        if (input.isLeft) map.localPosition.x -= .1
-//        if (input.isRight) map.localPosition.x += .1
-//        if (input.isForward) map.localPosition.y += .1
-//        if (input.isBackward) map.localPosition.y -= .1
+        val input = player.currentInput
+        if (input.isLeft) map.localPosition.x += .1
+        if (input.isRight) map.localPosition.x -= .1
+        if (input.isForward) map.localPosition.y += .1
+        if (input.isBackward) map.localPosition.y -= .1
     }
 
     onTick {

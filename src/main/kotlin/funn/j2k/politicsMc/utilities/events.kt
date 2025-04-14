@@ -8,6 +8,7 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 import java.io.Closeable
@@ -30,7 +31,7 @@ fun onInteractEntity(listener: (Player, Entity, EquipmentSlot) -> Unit): Closeab
 }
 
 
-fun onInteractEntity(listener: (event: org.bukkit.event.player.PlayerInteractEntityEvent) -> Unit): Closeable {
+fun onInteractEntity(listener: (event: PlayerInteractEntityEvent) -> Unit): Closeable {
     return addEventListener(object : Listener {
         @EventHandler
         fun onInteract(event: PlayerInteractEntityEvent) {
@@ -56,3 +57,12 @@ fun onGestureUseItem(listener: (Player, ItemStack) -> Unit) = addEventListener(o
         listener(event.player, event.item ?: return)
     }
 })
+
+fun onPlayerMove(listener: (event: PlayerMoveEvent) -> Unit): Closeable {
+    return addEventListener(object : Listener {
+        @EventHandler
+        fun onMove(event: PlayerMoveEvent) {
+            listener(event)
+        }
+    })
+}

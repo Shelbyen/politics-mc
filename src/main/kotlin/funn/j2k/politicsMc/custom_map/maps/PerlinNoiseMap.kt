@@ -2,7 +2,6 @@ package funn.j2k.politicsMc.custom_map.maps
 
 import funn.j2k.politicsMc.custom_map.bitmapToRenderEntities
 import funn.j2k.politicsMc.utilities.rendering.SharedEntityRenderer
-import funn.j2k.politicsMc.utilities.sendDebugMessage
 import org.bukkit.Color
 import org.bukkit.entity.Player
 import org.bukkit.util.Vector
