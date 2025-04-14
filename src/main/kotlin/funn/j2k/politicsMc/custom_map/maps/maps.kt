@@ -22,7 +22,7 @@ interface Bitmap {
 
 abstract class Map(
     val player: Player,
-    private val localPosition: Vector = Vector(0.8f, -0.4f, 1f)
+    val localPosition: Vector = Vector(0.8f, -0.4f, 1f)
 ) : Bitmap {
     protected val size = 16
     protected val bitmap = Grid(size, size) { CLEAR_COLOR }
