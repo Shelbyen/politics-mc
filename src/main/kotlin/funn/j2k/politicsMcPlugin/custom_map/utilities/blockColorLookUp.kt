@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
 import com.google.gson.Gson
 import org.bukkit.Color

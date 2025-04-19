@@ -1,7 +1,8 @@
 package funn.j2k.politicsMc.custom_map.maps
 
 import funn.j2k.politicsMc.custom_map.bitmapToRenderEntities
-import funn.j2k.politicsMc.utilities.rendering.SharedEntityRenderer
+import funn.j2k.politicsMc.custom_map.maps
+import funn.j2k.politicsMc.custom_map.utilities.rendering.SharedEntityRenderer
 import org.bukkit.Color
 import org.bukkit.entity.Player
 import org.bukkit.util.Vector
@@ -32,6 +33,10 @@ class PerlinNoiseMap(
     }
 
     override fun update() {
+        if (!player.isOnline) {
+            maps.remove(player.name)
+            return
+        }
         if (lastChunkPosition.x != player.chunk.x || lastChunkPosition.z != player.chunk.z) {
             updateMap()
             lastChunkPosition = player.chunk

@@ -2,10 +2,10 @@ package funn.j2k.politicsMc.custom_map
 
 import funn.j2k.politicsMc.custom_map.maps.Map
 import funn.j2k.politicsMc.custom_map.maps.PerlinNoiseMap
-import funn.j2k.politicsMc.utilities.*
-import funn.j2k.politicsMc.utilities.rendering.RenderEntityGroup
-import funn.j2k.politicsMc.utilities.rendering.interpolateTransform
-import funn.j2k.politicsMc.utilities.rendering.textRenderEntity
+import funn.j2k.politicsMc.custom_map.utilities.*
+import funn.j2k.politicsMc.custom_map.utilities.rendering.RenderEntityGroup
+import funn.j2k.politicsMc.custom_map.utilities.rendering.interpolateTransform
+import funn.j2k.politicsMc.custom_map.utilities.rendering.textRenderEntity
 import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.World

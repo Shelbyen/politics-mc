@@ -2,9 +2,9 @@ package funn.j2k.politicsMc.custom_map.maps
 
 import funn.j2k.politicsMc.custom_map.FragmentData
 import funn.j2k.politicsMc.custom_map.RenderBuffer
-import funn.j2k.politicsMc.utilities.Grid
-import funn.j2k.politicsMc.utilities.rotate
-import funn.j2k.politicsMc.utilities.yawRadians
+import funn.j2k.politicsMc.custom_map.utilities.Grid
+import funn.j2k.politicsMc.custom_map.utilities.rotate
+import funn.j2k.politicsMc.custom_map.utilities.yawRadians
 import org.bukkit.Color
 import org.bukkit.entity.Player
 import org.bukkit.util.Vector

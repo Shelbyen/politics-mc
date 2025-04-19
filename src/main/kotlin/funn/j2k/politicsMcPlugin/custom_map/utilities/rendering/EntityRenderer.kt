@@ -1,8 +1,8 @@
-package funn.j2k.politicsMc.utilities.rendering
+package funn.j2k.politicsMc.custom_map.utilities.rendering
 
-import funn.j2k.politicsMc.utilities.onDisablePlugin
-import funn.j2k.politicsMc.utilities.onTickEnd
-import funn.j2k.politicsMc.utilities.spawnEntity
+import funn.j2k.politicsMc.custom_map.utilities.onDisablePlugin
+import funn.j2k.politicsMc.custom_map.utilities.onTickEnd
+import funn.j2k.politicsMc.custom_map.utilities.spawnEntity
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.entity.BlockDisplay

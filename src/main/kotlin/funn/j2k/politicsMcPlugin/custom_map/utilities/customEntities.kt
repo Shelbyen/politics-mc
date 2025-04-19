@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
 import org.bukkit.Bukkit
 import org.bukkit.entity.Entity
@@ -9,7 +9,7 @@ class EntityTag(
     fun getEntities() = allEntities().filter { it.scoreboardTags.contains(tag) }
 
     fun onTick(action: (Entity) -> Unit) {
-        funn.j2k.politicsMc.utilities.onTick {
+        funn.j2k.politicsMc.custom_map.utilities.onTick {
             getEntities().forEach { action(it) }
         }
     }

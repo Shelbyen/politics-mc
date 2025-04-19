@@ -1,6 +1,6 @@
 package funn.j2k.politicsMc.custom_map
 
-import funn.j2k.politicsMc.utilities.Grid
+import funn.j2k.politicsMc.custom_map.utilities.Grid
 import org.bukkit.Color
 import org.joml.Vector4d
 

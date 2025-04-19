@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities.rendering
+package funn.j2k.politicsMc.custom_map.utilities.rendering
 
 import org.bukkit.entity.Display
 import org.bukkit.util.Transformation

@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.1.10"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     `java-library`
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.14"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16"
 }
 
 group = "funn.j2k"

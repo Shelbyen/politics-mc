@@ -1,7 +1,7 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
-import funn.j2k.politicsMc.utilities.rendering.RenderEntity
-import funn.j2k.politicsMc.utilities.rendering.SharedEntityRenderer
+import funn.j2k.politicsMc.custom_map.utilities.rendering.RenderEntity
+import funn.j2k.politicsMc.custom_map.utilities.rendering.SharedEntityRenderer
 import org.bukkit.entity.Interaction
 import org.bukkit.entity.Player
 import org.bukkit.util.Vector

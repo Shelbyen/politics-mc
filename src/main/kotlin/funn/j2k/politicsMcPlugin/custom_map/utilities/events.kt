@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player

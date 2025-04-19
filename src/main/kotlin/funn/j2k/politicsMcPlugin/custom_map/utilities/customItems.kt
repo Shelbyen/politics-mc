@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
 import org.bukkit.Bukkit
 import org.bukkit.Bukkit.createInventory
@@ -37,7 +37,7 @@ class CustomItemComponent(val id: String) {
     }
 
     fun onInteractEntity(action: (Player, Entity, ItemStack) -> Unit) {
-        funn.j2k.politicsMc.utilities.onInteractEntity(fun(player, entity, hand) {
+        funn.j2k.politicsMc.custom_map.utilities.onInteractEntity(fun(player, entity, hand) {
             val item = player.inventory.getItem(hand) ?: return
             if (isItem(item)) action(player, entity, item)
         })

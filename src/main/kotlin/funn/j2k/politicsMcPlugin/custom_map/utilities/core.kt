@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.utilities
+package funn.j2k.politicsMc.custom_map.utilities
 
 import net.md_5.bungee.api.ChatMessageType
 import org.bukkit.Bukkit
