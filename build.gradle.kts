@@ -1,8 +1,8 @@
 plugins {
-    kotlin("jvm") version "2.1.10"
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.paperweight)
+    alias(libs.plugins.nova)
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    `java-library`
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.16"
 }
 
 group = "funn.j2k"
@@ -16,13 +16,33 @@ repositories {
     maven("https://oss.sonatype.org/content/groups/public/") {
         name = "sonatype"
     }
+    maven("https://repo.xenondevs.xyz/releases")
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    paperweight.paperDevBundle(libs.versions.paper)
+    implementation(libs.nova)
 }
+
+addon {
+    name = project.name.replaceFirstChar(Char::uppercase)
+    version = project.version.toString()
+    main = "funn.j2k.politicsMc.PoliticsMc"
+
+    // output directory for the generated addon jar is read from the "outDir" project property (-PoutDir="...")
+    val outDir = project.findProperty("outDir")
+    if (outDir is String)
+        destination.set(File(outDir))
+}
+
+afterEvaluate {
+    tasks.getByName<Jar>("jar") {
+        archiveClassifier = ""
+    }
+}
+
 
 val targetJavaVersion = 21
 kotlin {

@@ -1,6 +1,6 @@
 name: politics-mc
 version: '1.0-SNAPSHOT'
-main: funn.j2k.politicsMcPlugin.PoliticsMcPlugin
+main: funn.j2k.politicsMc.PoliticsMc
 api-version: '1.21'
 load: STARTUP
 authors: [ shebik ]
@@ -11,7 +11,7 @@ website: j2k.fun
 commands:
   maps:
     description: Open the maps menu
-    permission: politics-mc-plugin.maps
+    permission: politics-mc.maps
 
 permissions:
   politics-mc.maps:

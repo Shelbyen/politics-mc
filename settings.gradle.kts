@@ -1,4 +1,4 @@
-rootProject.name = "politics-mc-plugin"
+rootProject.name = "politics-mc"
 include("politics-mc-addon")
 
 dependencyResolutionManagement {
@@ -9,7 +9,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from("xyz.xenondevs.nova:catalog:0.18")
+            from("xyz.xenondevs.nova:catalog:0.18.1")
         }
     }
 }

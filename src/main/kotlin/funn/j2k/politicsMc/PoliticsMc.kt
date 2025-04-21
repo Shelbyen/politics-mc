@@ -9,7 +9,7 @@ import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 
 
-class PoliticsMcPlugin : JavaPlugin() {
+class PoliticsMc : JavaPlugin() {
 
     override fun onEnable() {
         currentPlugin = this
