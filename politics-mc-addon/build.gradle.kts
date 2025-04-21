@@ -1,5 +1,5 @@
 group = "funn.j2k"
-version = "1.0-SNAPSHOT" // TODO: Change this to your addon version
+version = "1.0-SNAPSHOT"
 
 plugins {
     alias(libs.plugins.kotlin)
