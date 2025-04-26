@@ -1,4 +1,4 @@
-package funn.j2k.politicsMc.ore_control
+package funn.j2k.politicsMc.ore_control.impl.v1_21_4_R0.placement.custom_placement
 
 import net.minecraft.core.BlockPos
 import net.minecraft.util.RandomSource

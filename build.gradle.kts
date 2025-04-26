@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.paperweight)
     alias(libs.plugins.nova)
     id("com.github.johnrengelman.shadow") version "8.1.1"
+    kotlin("jvm") version "2.1.20"
 }
 
 group = "funn.j2k"
@@ -47,6 +48,7 @@ afterEvaluate {
 val targetJavaVersion = 21
 kotlin {
     jvmToolchain(targetJavaVersion)
+    jvmToolchain(21)
 }
 
 tasks.build {
