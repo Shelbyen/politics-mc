@@ -1,6 +1,6 @@
 rootProject.name = "politics-mc"
 include("politics-mc-addon")
-include("common")
+include("ore-control")
 
 dependencyResolutionManagement {
     repositories {
@@ -10,7 +10,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from("xyz.xenondevs.nova:catalog:0.18.1")
+            from("xyz.xenondevs.nova:catalog:0.19-alpha.8")
         }
     }
 }
@@ -26,4 +26,5 @@ pluginManagement {
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
-include("common")
+
+include("ore-control")

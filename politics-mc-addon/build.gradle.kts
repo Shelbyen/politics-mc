@@ -2,7 +2,7 @@ group = "funn.j2k"
 version = "1.0-SNAPSHOT"
 
 plugins {
-    alias(libs.plugins.kotlin)
+    kotlin("jvm") version "2.2.0-RC"
     alias(libs.plugins.paperweight)
     alias(libs.plugins.nova)
 }
