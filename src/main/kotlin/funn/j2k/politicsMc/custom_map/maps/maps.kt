@@ -24,8 +24,8 @@ abstract class Map(
     val player: Player,
     val localPosition: Vector = Vector(0.8f, -0.4f, 1f)
 ) : Bitmap {
-    protected val size = 16
-    protected val bitmap = Grid(size, size) { CLEAR_COLOR }
+    var size = 16
+    protected var bitmap = Grid(size, size) { CLEAR_COLOR }
     protected var lastChunkPosition = player.chunk
     override fun getMap() = bitmap
 

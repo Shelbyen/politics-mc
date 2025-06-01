@@ -1,6 +1,5 @@
 rootProject.name = "politics-mc"
 include("politics-mc-addon")
-include("ore-control")
 
 dependencyResolutionManagement {
     repositories {
@@ -26,5 +25,3 @@ pluginManagement {
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
-
-include("ore-control")

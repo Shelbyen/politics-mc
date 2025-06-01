@@ -24,8 +24,6 @@ class PoliticsMc : JavaPlugin() {
             })
             true
         }
-        val world: World? = Bukkit.getWorld("world")
-
     }
 
     override fun onDisable() {

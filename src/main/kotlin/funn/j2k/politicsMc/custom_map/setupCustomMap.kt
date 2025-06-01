@@ -91,6 +91,47 @@ fun setupCustomMap() {
         if (input.isBackward) map.localPosition.y -= .1
     }
 
+    val setValue = CustomItemComponent("set_value_item")
+    customItemRegistry += createNamedItem(org.bukkit.Material.CLOCK, "Set Value").attach(setValue)
+    setValue.onHeldTick { player, _ ->
+        val map = maps[player.name] ?: return@onHeldTick
+        if (map !is PerlinNoiseMap) {
+            return@onHeldTick
+        }
+
+        player.lockMovement()
+
+        sendDebugMessage(map.frequency.toString() + " " + map.amplitude.toString())
+
+
+        val input = player.currentInput
+        if (input.isLeft) map.frequency -= .01
+        if (input.isRight) map.frequency += .01
+        if (input.isForward) map.amplitude -= .1
+        if (input.isBackward) map.amplitude += .1
+        map.updateMap()
+    }
+
+    val zoomMap = CustomItemComponent("zoom_map_item")
+    customItemRegistry += createNamedItem(org.bukkit.Material.SPECTRAL_ARROW, "Zoom Map").attach(zoomMap)
+    zoomMap.onHeldTick { player, _ ->
+        val map = maps[player.name] ?: return@onHeldTick
+        if (map !is PerlinNoiseMap) {
+            return@onHeldTick
+        }
+
+        player.lockMovement()
+
+        sendDebugMessage(map.octaves.toString() + " " + map.size.toString())
+
+        val input = player.currentInput
+        if (input.isLeft) map.octaves -= 1
+        if (input.isRight) map.octaves += 1
+        if (input.isForward) map.zoom(-1)
+        if (input.isBackward) map.zoom(1)
+        map.updateMap()
+    }
+
     onTick {
         maps.toList().forEach { it.second.update() }
     }
