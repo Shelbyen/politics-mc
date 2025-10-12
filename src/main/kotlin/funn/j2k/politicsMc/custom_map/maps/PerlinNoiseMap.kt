@@ -3,6 +3,8 @@ package funn.j2k.politicsMc.custom_map.maps
 import funn.j2k.politicsMc.custom_map.bitmapToRenderEntities
 import funn.j2k.politicsMc.custom_map.maps
 import funn.j2k.politicsMc.custom_map.utilities.Grid
+import funn.j2k.politicsMc.custom_map.utilities.cosInterpolate
+import funn.j2k.politicsMc.custom_map.utilities.getNormaliseNoise
 import funn.j2k.politicsMc.custom_map.utilities.rendering.SharedEntityRenderer
 import org.bukkit.Color
 import org.bukkit.entity.Player
@@ -13,25 +15,24 @@ import org.bukkit.util.noise.SimplexNoiseGenerator
 class PerlinNoiseMap(
     player: Player, localPosition: Vector = Vector(0.8f, -0.4f, 1f)
 ) : Map(player, localPosition) {
-    private val noiseGenerator = SimplexNoiseGenerator(123123123)
-    var octaves = 8
-    var frequency = 0.009
-    var amplitude = 1.0
+    private val noiseGenerator = SimplexNoiseGenerator(1)
+    var octaves = 2
+    var frequency = 4.0
+    var scale = 0.007
 
     init {
         updateMap()
+        size = 32
     }
 
     fun updateMap() {
         for ((px, py) in bitmap.indices()) {
-            val noiseValue = noiseGenerator.noise(
+            val noiseValue = noiseGenerator.getNormaliseNoise(
                 (player.chunk.x - size / 2 + px).toDouble(),
                 (player.chunk.z - size / 2 + py).toDouble(),
-                octaves, frequency, amplitude
-            ) - 1
-
-            val color = if ((noiseValue * 255 / 2).toInt() in 0..255) (noiseValue * 255 / 2).toInt() else 0
-
+                scale, octaves, frequency, powScale = 4.0, powSlice = 0.7
+            )
+            val color = cosInterpolate(0.0, 255.0, noiseValue).toInt()
             bitmap[px to py] = Color.fromRGB(color, color, color)
         }
     }

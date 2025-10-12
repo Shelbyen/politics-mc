@@ -101,14 +101,14 @@ fun setupCustomMap() {
 
         player.lockMovement()
 
-        sendDebugMessage(map.frequency.toString() + " " + map.amplitude.toString())
+        sendDebugMessage(map.frequency.toString() + " " + map.scale.toString())
 
 
         val input = player.currentInput
-        if (input.isLeft) map.frequency -= .01
-        if (input.isRight) map.frequency += .01
-        if (input.isForward) map.amplitude -= .1
-        if (input.isBackward) map.amplitude += .1
+        if (input.isLeft) map.scale -= .001
+        if (input.isRight) map.scale += .001
+        if (input.isForward) map.frequency += .1
+        if (input.isBackward) map.frequency -= .1
         map.updateMap()
     }
 

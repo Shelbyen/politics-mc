@@ -2,10 +2,14 @@ package funn.j2k.politicsMc.custom_map.utilities
 
 import org.bukkit.Location
 import org.bukkit.util.Vector
+import org.bukkit.util.noise.SimplexNoiseGenerator
 import org.joml.*
 import java.lang.Math
 import kotlin.math.abs
+import kotlin.math.absoluteValue
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.pow
 import kotlin.math.sign
 import kotlin.math.sqrt
 
@@ -97,4 +101,21 @@ fun Double.toRadians(): Double {
 
 fun Float.toRadians(): Float {
     return Math.toRadians(this.toDouble()).toFloat()
+}
+
+fun cosInterpolate(a: Double, b: Double, x: Double): Double {
+    val f = (1 - cos(x * Math.PI)) * 0.5
+    return a * (1 - f) + b * f
+}
+
+fun SimplexNoiseGenerator.getNormaliseNoise(x: Double, y: Double, coordinateScale: Double = 0.007,
+                                            octaves: Int = 2, frequency: Double = 4.0, amplitude: Double = 1.0,
+                                            powScale: Double = 1.0, powSlice: Double = 1.0): Double {
+    val noiseValue = (this.noise(
+        x * coordinateScale,
+        y * coordinateScale,
+        octaves, frequency, amplitude
+    ) / octaves + powSlice).pow(powScale)
+
+    return noiseValue.absoluteValue
 }
