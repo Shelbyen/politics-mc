@@ -1,7 +1,7 @@
 name: politics-mc
 version: '1.0-SNAPSHOT'
 main: funn.j2k.politicsMc.PoliticsMc
-api-version: '1.21.6'
+api-version: '1.21'
 load: STARTUP
 authors: [ shebik ]
 description: My plugin for politics
@@ -9,11 +9,23 @@ website: j2k.fun
 
 
 commands:
-  maps:
-    description: Open the maps menu
-    permission: politics-mc.maps
+  items:
+    description: Open the items menu
+    permission: politics-mc.items
+  map_settings:
+    description: Set globe settings
+    permission: politics-mc.map_settings
+  map_presets:
+    description: Set globe presets
+    permission: politics-mc.map_presets
 
 permissions:
-  politics-mc.maps:
+  politics-mc.items:
     description: Allows access to the items command
+    default: op
+  politics-mc.map_settings:
+    description: Allows access to the globe_settings command
+    default: op
+  politics-mc.map_presets:
+    description: Allows access to the globe_presets command
     default: op
