@@ -1,8 +1,8 @@
 package funn.j2k.politicsMc.gui.utilities.point_detection
 
 import funn.j2k.politicsMc.gui.utilities.currentPlugin
-import funn.j2k.politicsMc.gui.utilities.events.onInteractEntity
-import funn.j2k.politicsMc.gui.utilities.events.runLater
+import funn.j2k.politicsMc.common_utilities.events.onInteractEntity
+import funn.j2k.politicsMc.common_utilities.events.runLater
 import funn.j2k.politicsMc.gui.utilities.rendering.RenderEntity
 import funn.j2k.politicsMc.gui.utilities.maths.toVector3f
 import funn.j2k.politicsMc.gui.utilities.maths.toVector4f

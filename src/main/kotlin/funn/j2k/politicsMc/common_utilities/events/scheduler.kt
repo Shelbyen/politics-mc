@@ -1,6 +1,7 @@
-package funn.j2k.politicsMc.gui.utilities.events
+package funn.j2k.politicsMc.common_utilities.events
 
 import funn.j2k.politicsMc.gui.utilities.currentPlugin
+import org.bukkit.scheduler.BukkitTask
 import java.io.Closeable
 
 fun runLater(delay: Long, task: () -> Unit): Closeable {
@@ -13,7 +14,7 @@ fun runLater(delay: Long, task: () -> Unit): Closeable {
 
 fun interval(delay: Long, period: Long, task: (it: Closeable) -> Unit): Closeable {
     val plugin = currentPlugin
-    lateinit var handler: org.bukkit.scheduler.BukkitTask
+    lateinit var handler: BukkitTask
     val closeable = Closeable { handler.cancel() }
     handler = plugin.server.scheduler.runTaskTimer(plugin, Runnable { task(closeable) }, delay, period)
     return closeable

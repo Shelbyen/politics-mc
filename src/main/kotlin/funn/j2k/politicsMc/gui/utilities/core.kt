@@ -1,6 +1,6 @@
 package funn.j2k.politicsMc.gui.utilities
 
-import funn.j2k.politicsMc.gui.utilities.events.onTick
+import funn.j2k.politicsMc.common_utilities.events.onTick
 import net.md_5.bungee.api.ChatMessageType
 import org.bukkit.Bukkit
 import org.bukkit.Location

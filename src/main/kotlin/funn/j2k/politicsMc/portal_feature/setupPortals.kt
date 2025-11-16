@@ -1,7 +1,7 @@
 package funn.j2k.politicsMc.portal_feature
 
-import funn.j2k.politicsMc.common_utilites.events.onPortalCreate
-import funn.j2k.politicsMc.common_utilites.events.onPortalSpawn
+import funn.j2k.politicsMc.common_utilities.events.onPortalCreate
+import funn.j2k.politicsMc.common_utilities.events.onPortalSpawn
 import funn.j2k.politicsMc.gui.utilities.currentPlugin
 import org.bukkit.entity.Player
 

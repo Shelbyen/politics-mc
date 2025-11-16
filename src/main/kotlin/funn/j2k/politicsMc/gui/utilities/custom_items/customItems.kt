@@ -1,7 +1,7 @@
 package funn.j2k.politicsMc.gui.utilities.custom_items
 
-import funn.j2k.politicsMc.gui.utilities.events.onGestureUseItem
-import funn.j2k.politicsMc.gui.utilities.events.onTick
+import funn.j2k.politicsMc.common_utilities.events.onGestureUseItem
+import funn.j2k.politicsMc.common_utilities.events.onTick
 import funn.j2k.politicsMc.gui.utilities.namespacedID
 import funn.j2k.politicsMc.gui.utilities.requireCommand
 import org.bukkit.Bukkit
@@ -51,10 +51,10 @@ class CustomItemComponent(val id: String) {
     }
 
     fun onInteractEntity(action: (Player, Entity, ItemStack) -> Unit) {
-        funn.j2k.politicsMc.gui.utilities.events.onInteractEntity(fun(player, entity, hand) {
-            val item = player.inventory.getItem(hand) ?: return
-            if (isAttached(item)) action(player, entity, item)
-        })
+	    funn.j2k.politicsMc.common_utilities.events.onInteractEntity(fun(player, entity, hand) {
+		    val item = player.inventory.getItem(hand) ?: return
+		    if (isAttached(item)) action(player, entity, item)
+	    })
     }
 
     fun onHeldTick(action: (Player, ItemStack) -> Unit) {

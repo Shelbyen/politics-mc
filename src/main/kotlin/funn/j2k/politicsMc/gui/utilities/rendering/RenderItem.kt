@@ -5,7 +5,7 @@ package funn.j2k.politicsMc.gui.utilities.rendering
 import funn.j2k.politicsMc.gui.utilities.custom_entities.CustomEntityComponent
 import funn.j2k.politicsMc.gui.utilities.custom_entities.attach
 import funn.j2k.politicsMc.gui.utilities.spawnEntity
-import funn.j2k.politicsMc.gui.utilities.events.onTickEnd
+import funn.j2k.politicsMc.common_utilities.events.onTickEnd
 import funn.j2k.politicsMc.gui.utilities.onPluginShutdown
 import org.bukkit.Location
 import org.bukkit.entity.Entity

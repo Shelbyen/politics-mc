@@ -1,6 +1,6 @@
 package funn.j2k.politicsMc.gui.utilities.custom_entities
 
-import funn.j2k.politicsMc.gui.utilities.events.onInteractEntity
+import funn.j2k.politicsMc.common_utilities.events.onInteractEntity
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
 import org.bukkit.entity.Entity
@@ -23,9 +23,9 @@ class CustomEntityComponent private constructor(val tag: String)  {
     }
 
     fun onTick(action: (Entity) -> Unit) {
-        funn.j2k.politicsMc.gui.utilities.events.onTick {
-            entities().forEach { action(it) }
-        }
+	    funn.j2k.politicsMc.common_utilities.events.onTick {
+		    entities().forEach { action(it) }
+	    }
     }
 
     fun onInteract(action: (event: org.bukkit.event.player.PlayerInteractEntityEvent) -> Unit) {
